@@ -1,0 +1,21 @@
+.btn {
+  padding: 0 20px;
+  background-color: var(--color-brand);
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.87;
+  letter-spacing: 0.06em;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  box-shadow: inset 3px 6px 16px -8px rgba(249, 243, 232, 0.9), inset -2px -2px 8px 1px rgba(77, 57, 19, 0.75), 4px 4px 6px rgba(58, 43, 12, 0.22);
+}
+.btn:hover {
+  box-shadow: inset 2px 2px 3px rgba(77, 57, 19, 0.75), inset -2px -2px 4px rgba(249, 243, 232, 0.6);
+}
+
+.loadMore__btn {
+  margin-bottom: 15px;
+}

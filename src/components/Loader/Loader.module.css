@@ -1,0 +1,6 @@
+.spinner {
+  position: fixed;
+  bottom: 30%;
+  z-index: 20;
+  opacity: 0.5;
+}

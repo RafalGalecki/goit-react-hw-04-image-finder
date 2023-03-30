@@ -1,0 +1,97 @@
+@import "../Button/Button.module.css";
+
+:root {
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
+  --color-brand: #b24342;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+  height: auto;
+
+  background-color: #e18957;
+  box-shadow: inset 0px -2px 4px white, 0px 2px 8px #47351222;
+  z-index: 10;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  height: auto;
+  width: 70vw;
+  gap: 4px;
+}
+.input {
+  padding: 8px;
+  height: 100%;
+  width: 100%;
+  border-color: var(--color-brand);
+  border-radius: 4px;
+  outline: none;
+  color: #261c09;
+  box-shadow: 4px 4px 6px rgba(58, 43, 12, 0.22);
+}
+.btn {
+  padding: 0 20px;
+  background-color: var(--color-brand);
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.87;
+  letter-spacing: 0.06em;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  box-shadow: inset 3px 6px 16px -8px rgba(249, 243, 232, 0.9), inset -2px -2px 8px 1px rgba(77, 57, 19, 0.75), 4px 4px 6px rgba(58, 43, 12, 0.22);
+}
+.btn:hover {
+  box-shadow: inset 2px 2px 3px rgba(77, 57, 19, 0.75), inset -2px -2px 4px rgba(249, 243, 232, 0.6);
+}
+.search__btn {
+  text-align: center;
+  height: 100%;
+  width: 30vw;
+  min-width: 80px;
+}
+
+
+/* Media */
+@media screen and (min-width: 480px) {
+  .form {
+    flex-direction: row;
+    width: 60vw;
+  }
+  .input {
+    padding: 4px;
+  }
+  .search__btn {
+    width: 20vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .form {
+    width: 50vw;
+  }
+
+  .search__btn {
+    width: 16vw;
+  }
+}
+@media screen and (min-width: 1140px) {
+  .form {
+    width: 40vw;
+  }
+}
