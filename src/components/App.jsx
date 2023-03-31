@@ -18,7 +18,7 @@ export const App = () => {
   const [largePhoto, setLargePhoto] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isModal, setIsModal] = useState(false);
-  const [isButton, setIsButton] = useState(false);
+  //const [isButton, setIsButton] = useState(true);
 
   // get initial photos - don't use useEffect
 
@@ -36,7 +36,8 @@ export const App = () => {
   // }
   const onSubmit = event => {
     event.preventDefault();
-    setQuery(event.target.inputQuery.value.trim().toLowerCase());
+    let inputValue = event.target.inputQuery.value;
+    setQuery(inputValue.trim().toLowerCase());
     setIsLoading(true);
     setPhotos([]);
     setPage(1);
@@ -46,21 +47,24 @@ export const App = () => {
   const handleClick = () => {
     setPage(prev => prev + 1);
     setIsLoading(true);
-    setIsButton(true);
+    //setIsButton(true);
   };
   useEffect(() => {
     if (!query) return;
     const getPhotos = async query => {
       try {
         const response = await fetchPhotosWithQuery(query, page);
-        setPhotos(prev => [...prev, ...response]);
+        setPhotos(prev => [...prev, ...response.hits]);
         console.log('response', response);
+        setTotalHits(response.totalHits);
+        setAllPages(Math.ceil(response.totalHits / PER_PAGE));
+
         if (response.length < 1) {
           console.log('error - nothing found');
         }
-        if (response.length < 12) {
-          setIsLoading(false);
-          setIsButton(false);
+        if (response.length > 12) {
+          setIsLoading(true);
+          //setIsButton(true);
         }
       } finally {
         setIsLoading(false);
@@ -150,7 +154,9 @@ export const App = () => {
       {/* {error ? <p>'Whoops, something went wrong: {error.message}</p> : null} */}
       {isLoading && <Loader />}
       <ImageGallery photos={photos} showModal={showModal} />
-      {isButton && <Button onClick={handleClick} />}
+      {totalHits > 0 && page < allPages && page !== allPages && (
+        <Button onClick={handleClick} />
+      )}
       {isModal && <Modal hideModal={hideModal} largeImg={largePhoto} />}
     </div>
   );

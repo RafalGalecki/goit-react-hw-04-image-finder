@@ -25,7 +25,7 @@ export const fetchPhotosWithQuery = async (query, page) => {
     // .catch(error => {
     //   console.log('probably rest api error', error);
     // });
-  return response.data.hits;
+  return response.data;
 };
 
 //export default fetchPhotosWithQuery;
