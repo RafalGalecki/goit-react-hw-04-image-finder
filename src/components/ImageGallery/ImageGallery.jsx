@@ -1,11 +1,10 @@
-import { Component } from 'react';
+import React from 'react';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import css from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
 
-class ImageGallery extends Component {
-  render() {
-    const { photos, showModal } = this.props;
+const ImageGallery = ({photos, showModal}) => {
+
 
     return (
       <ul className={css.gallery}>
@@ -21,7 +20,7 @@ class ImageGallery extends Component {
       </ul>
     );
   }
-}
+
 
 ImageGallery.propTypes = {
   photos: PropTypes.array.isRequired,

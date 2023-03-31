@@ -1,32 +1,36 @@
-import { Component } from 'react';
+import { useEffect } from 'react';
 import css from './Modal.module.css';
 import PropTypes from 'prop-types';
 
-class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener('keyup', this.handleClose);
-  }
-  componentWillUnmount() {
-    window.removeEventListener('keyup', this.handleClose);
-  }
-  handleClose = event => {
+const Modal = ({ hideModal, largeImg }) => {
+  useEffect(() => {
+    window.addEventListener('keyup', handleClose);
+    console.log('Mounting phase');
+  }, []);
+
+  useEffect(() => {
+    console.log('Mounting phase');
+
+    return () => {
+      window.removeEventListener('keyup', handleClose);
+      console.log('Unmounting phase');
+    };
+  }, []);
+
+  const handleClose = event => {
     if (event.code === 'Escape') {
-      return this.props.hideModal();
+      return hideModal();
     }
   };
 
-  render() {
-    const { hideModal, largeImg } = this.props;
-
-    return (
-      <div className={css.backdrop} onClick={hideModal}>
-        <div className={css.modal}>
-          <img src={largeImg} alt="" />
-        </div>
+  return (
+    <div className={css.backdrop} onClick={handleClose}>
+      <div className={css.modal}>
+        <img src={largeImg} alt="" />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Modal.propTypes = {
   largeImg: PropTypes.string.isRequired,

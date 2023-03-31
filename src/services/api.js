@@ -17,15 +17,15 @@ export const fetchPhotosWithQuery = async (query, page) => {
       per_page: PER_PAGE,
     },
   })
-    .then(response => {
-      const { totalHits, hits } = response.data;
-      const photos = { totalHits, hits };
-      return photos;
-    })
-    .catch(error => {
-      console.log('rest api error', error);
-    });
-  return response;
+    // .then(response => {
+    //   const { totalHits, hits } = response.data;
+    //   const photos = { totalHits, hits };
+    //   return photos;
+    // })
+    // .catch(error => {
+    //   console.log('probably rest api error', error);
+    // });
+  return response.data.hits;
 };
 
 //export default fetchPhotosWithQuery;

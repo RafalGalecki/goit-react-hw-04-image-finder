@@ -1,10 +1,9 @@
-import { Component } from 'react';
+import React from 'react';
 import css from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
 
-class ImageGalleryItem extends Component {
-  render() {
-    const { id, webformatURL, largeImageURL, tags, showModal } = this.props;
+const ImageGalleryItem = ({id, webformatURL, largeImageURL, tags, showModal}) => {
+  
 
     return (
       <li key={id} className={css.gallery__item}>
@@ -20,7 +19,7 @@ class ImageGalleryItem extends Component {
       </li>
     );
   }
-}
+
 ImageGalleryItem.propTypes = {
   webformatURL: PropTypes.string.isRequired,
   largeImageURL: PropTypes.string.isRequired,
