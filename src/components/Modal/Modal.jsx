@@ -3,19 +3,6 @@ import css from './Modal.module.css';
 import PropTypes from 'prop-types';
 
 const Modal = ({ hideModal, largeImg }) => {
-  useEffect(() => {
-    window.addEventListener('keyup', handleClose);
-    console.log('Mounting phase');
-  }, []);
-
-  useEffect(() => {
-    console.log('Mounting phase');
-
-    return () => {
-      window.removeEventListener('keyup', handleClose);
-      console.log('Unmounting phase');
-    };
-  }, []);
 
   const handleClose = event => {
     if (
@@ -25,6 +12,17 @@ const Modal = ({ hideModal, largeImg }) => {
       return hideModal();
     }
   };
+
+  useEffect(() => {
+    window.addEventListener('keyup', handleClose);
+
+    return () => {
+      window.removeEventListener('keyup', handleClose);
+      console.log('Unmounting phase');
+    };
+  }, [handleClose]);
+
+  
 
   return (
     <div className={css.backdrop} onClick={handleClose}>
