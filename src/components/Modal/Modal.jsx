@@ -18,7 +18,10 @@ const Modal = ({ hideModal, largeImg }) => {
   }, []);
 
   const handleClose = event => {
-    if (event.code === 'Escape') {
+    if (
+      event.code === 'Escape' ||
+      event.target.tagName.toLowerCase() !== 'img'
+    ) {
       return hideModal();
     }
   };
