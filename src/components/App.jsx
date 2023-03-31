@@ -7,7 +7,6 @@ import Modal from './Modal/Modal';
 import Button from './Button/Button';
 import Loader from './Loader/Loader';
 
-//const DELAY_TIME = 700;
 
 export const App = () => {
   const [photos, setPhotos] = useState([]);
@@ -39,7 +38,6 @@ export const App = () => {
       try {
         const response = await fetchPhotosWithQuery(query, page);
         setPhotos(prev => [...prev, ...response.hits]);
-        console.log('response', response);
         setTotalHits(response.totalHits);
         setAllPages(Math.ceil(response.totalHits / PER_PAGE));
       }

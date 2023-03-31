@@ -2,11 +2,7 @@ import React from 'react';
 import css from './Searchbar.module.css';
 import PropTypes from 'prop-types';
 
-
-
-const Searchbar = ({ children, onSubmit }) => {
-  
-
+const Searchbar = ({ onSubmit }) => {
   return (
     <header className={css.searchbar}>
       <form className={css.form} onSubmit={onSubmit}>

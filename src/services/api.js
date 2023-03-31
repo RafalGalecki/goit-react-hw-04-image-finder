@@ -22,4 +22,3 @@ export const fetchPhotosWithQuery = async (query, page) => {
   return response.data;
 };
 
-//export default fetchPhotosWithQuery;
