@@ -18,6 +18,7 @@ export const App = () => {
   const [largePhoto, setLargePhoto] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isModal, setIsModal] = useState(false);
+  const [error, setError] = useState(false);
 
   const onSubmit = event => {
     event.preventDefault();
@@ -41,15 +42,11 @@ export const App = () => {
         console.log('response', response);
         setTotalHits(response.totalHits);
         setAllPages(Math.ceil(response.totalHits / PER_PAGE));
-
-        // if (response.length < 1) {
-        //   await console.log('error - nothing found');
-        // }
-        // if (response.length > 12) {
-        //   setIsLoading(true);
-        //   console.log('more than 12');
-        // }
-      } finally {
+      }
+      catch (error) {
+      setError(true);
+      }
+      finally {
         setIsLoading(false);
       }
     };
@@ -68,7 +65,7 @@ export const App = () => {
   return (
     <div className={css.main}>
       <Searchbar onSubmit={onSubmit} />
-      {/* {error ? <p>'Whoops, something went wrong: {error.message}</p> : null} */}
+      {error ? <p style={{ marginTop: 100, fontWeight: 'bold' }}>Whoops, something went wrong...</p> : null}
       {isLoading && <Loader />}
       <ImageGallery photos={photos} showModal={showModal} />
       {totalHits > 0 && page < allPages && page !== allPages && (
